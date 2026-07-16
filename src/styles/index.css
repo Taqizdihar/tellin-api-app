@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+/* ===== Global Styles ===== */
+
+body {
+  margin: 0;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #ffffff;
+  color: #1a1a2e;
+}
+
+#root {
+  min-height: 100vh;
+}
