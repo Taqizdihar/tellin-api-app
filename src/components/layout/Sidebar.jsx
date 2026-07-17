@@ -1,13 +1,14 @@
 import { NavLink } from 'react-router-dom';
-import { Home, Key, Globe, Search, History, Settings, X } from 'lucide-react';
+import { Home, Key, Globe, Search, Wrench, ShieldCheck, Settings, X } from 'lucide-react';
 
 const menuItems = [
   { path: '/', label: 'Home', icon: Home },
   { path: '/auth', label: 'Authentication', icon: Key },
   { path: '/explorer', label: 'API Explorer', icon: Globe },
   { path: '/inspector', label: 'Response Inspector', icon: Search },
-  { path: '/history', label: 'Request History', icon: History },
-  { path: '/settings', label: 'Settings', icon: Settings },
+  { path: '/toolkit', label: 'Developer Toolkit', icon: Wrench },
+  { path: '/settings', label: 'Role Verification', icon: ShieldCheck },
+  { path: '/app-settings', label: 'Application Settings', icon: Settings },
 ];
 
 export default function Sidebar({ isOpen, onClose }) {
@@ -29,7 +30,7 @@ export default function Sidebar({ isOpen, onClose }) {
       `}>
         <div className="flex items-center justify-between h-16 px-4 border-b border-gray-200 lg:hidden">
           <span className="font-bold text-gray-900">Menu</span>
-          <button onClick={onClose} className="p-2 rounded-md text-gray-500 hover:bg-gray-100">
+          <button onClick={onClose} className="p-2 rounded-md text-gray-500 hover:bg-gray-100" aria-label="Close sidebar">
             <X size={20} />
           </button>
         </div>

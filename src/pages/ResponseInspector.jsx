@@ -1,5 +1,7 @@
 import PageHeader from '../components/layout/PageHeader';
 import ContentContainer from '../components/layout/ContentContainer';
+import EmptyState from '../components/common/EmptyState';
+import { Search } from 'lucide-react';
 
 export default function ResponseInspector() {
   return (
@@ -9,7 +11,11 @@ export default function ResponseInspector() {
         description="View detailed JSON responses and headers"
       />
       <ContentContainer>
-        <p className="text-sm text-gray-500">Response Inspector interface will be implemented here.</p>
+        <EmptyState
+          icon={Search}
+          title="No Response Data"
+          description="Execute a request in the API Explorer first to view its response details here."
+        />
       </ContentContainer>
     </div>
   );

@@ -4,7 +4,7 @@ import SectionTitle from '../components/ui/SectionTitle';
 import Badge from '../components/ui/Badge';
 import apiConfig from '../config/api';
 import { useAuth } from '../context/AuthContext';
-import { CheckCircle, Clock, XCircle, Activity, Layers, Plug, Shield, Database, Workflow, Lock, UserCheck } from 'lucide-react';
+import { CheckCircle, Clock, XCircle, Activity, Layers, Plug, Shield, Database, Workflow, Lock, UserCheck, Send, Eye, Wrench, Settings } from 'lucide-react';
 
 function StatusCard({ icon: Icon, iconBg, iconColor, badge, badgeVariant, title, description }) {
   return (
@@ -80,7 +80,14 @@ export default function Home() {
         <StatusCard icon={Shield} iconBg="bg-green-50" iconColor="text-green-600" badge="Ready" badgeVariant="success" title="Token Manager" description="localStorage utilities ready" />
         <StatusCard icon={Database} iconBg="bg-green-50" iconColor="text-green-600" badge="Ready" badgeVariant="success" title="Service Layer" description="Service placeholders established" />
         <StatusCard icon={Workflow} iconBg="bg-green-50" iconColor="text-green-600" badge="Ready" badgeVariant="success" title="Axios Instance" description="Base URL, timeout, JSON headers" />
-        <StatusCard icon={Activity} iconBg="bg-yellow-50" iconColor="text-yellow-600" badge="Waiting" badgeVariant="warning" title="API Explorer" description="Endpoint testing pending" />
+        <StatusCard icon={Wrench} iconBg="bg-green-50" iconColor="text-green-600" badge="Operational" badgeVariant="success" title="Developer Toolkit" description="Dashboard of API utilities" />
+        <StatusCard icon={Clock} iconBg="bg-green-50" iconColor="text-green-600" badge="Operational" badgeVariant="success" title="History" description="Local storage history persistence" />
+        <StatusCard icon={Activity} iconBg="bg-green-50" iconColor="text-green-600" badge="Operational" badgeVariant="success" title="Health Check" description="System connectivity verification" />
+        <StatusCard icon={Shield} iconBg="bg-green-50" iconColor="text-green-600" badge="Operational" badgeVariant="success" title="Role Verification" description="Role authorization tester" />
+        <StatusCard icon={CheckCircle} iconBg="bg-green-50" iconColor="text-green-600" badge="Operational" badgeVariant="success" title="Permission Matrix" description="Module access control verification" />
+        <StatusCard icon={Settings} iconBg="bg-green-50" iconColor="text-green-600" badge="Operational" badgeVariant="success" title="Settings" description="Local app configuration" />
+        <StatusCard icon={Activity} iconBg="bg-green-50" iconColor="text-green-600" badge="Operational" badgeVariant="success" title="Diagnostics" description="System health tools" />
+        <StatusCard icon={Wrench} iconBg="bg-green-50" iconColor="text-green-600" badge="Operational" badgeVariant="success" title="Developer Preferences" description="Local UI settings" />
       </div>
     </div>
   );

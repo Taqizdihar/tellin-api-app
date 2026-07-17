@@ -1,25 +1,36 @@
+import { lazy, Suspense } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import AppLayout from '../layouts/AppLayout';
-import Home from '../pages/Home';
-import Authentication from '../pages/Authentication';
-import ApiExplorer from '../pages/ApiExplorer';
-import ResponseInspector from '../pages/ResponseInspector';
-import RequestHistory from '../pages/RequestHistory';
-import Settings from '../pages/Settings';
-import NotFound from '../pages/NotFound';
 import ProtectedRoute from '../components/common/ProtectedRoute';
+import PageLoader from '../components/common/PageLoader';
+
+// Lazy loaded pages
+const Home = lazy(() => import('../pages/Home'));
+const Authentication = lazy(() => import('../pages/Authentication'));
+const ApiExplorer = lazy(() => import('../pages/ApiExplorer'));
+const ResponseInspector = lazy(() => import('../pages/ResponseInspector'));
+const DeveloperToolkit = lazy(() => import('../pages/DeveloperToolkit'));
+const RoleVerification = lazy(() => import('../pages/RoleVerification'));
+const ApplicationSettings = lazy(() => import('../pages/ApplicationSettings'));
+const NotFound = lazy(() => import('../pages/NotFound'));
+
+const withSuspense = (Component) => (
+  <Suspense fallback={<PageLoader />}>
+    <Component />
+  </Suspense>
+);
 
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
     children: [
-      { path: '/', element: <Home /> },
-      { path: '/auth', element: <Authentication /> },
+      { path: '/', element: withSuspense(Home) },
+      { path: '/auth', element: withSuspense(Authentication) },
       {
         path: '/explorer',
         element: (
           <ProtectedRoute>
-            <ApiExplorer />
+            {withSuspense(ApiExplorer)}
           </ProtectedRoute>
         ),
       },
@@ -27,15 +38,15 @@ const router = createBrowserRouter([
         path: '/inspector',
         element: (
           <ProtectedRoute>
-            <ResponseInspector />
+            {withSuspense(ResponseInspector)}
           </ProtectedRoute>
         ),
       },
       {
-        path: '/history',
+        path: '/toolkit',
         element: (
           <ProtectedRoute>
-            <RequestHistory />
+            {withSuspense(DeveloperToolkit)}
           </ProtectedRoute>
         ),
       },
@@ -43,11 +54,19 @@ const router = createBrowserRouter([
         path: '/settings',
         element: (
           <ProtectedRoute>
-            <Settings />
+            {withSuspense(RoleVerification)}
           </ProtectedRoute>
         ),
       },
-      { path: '*', element: <NotFound /> },
+      {
+        path: '/app-settings',
+        element: (
+          <ProtectedRoute>
+            {withSuspense(ApplicationSettings)}
+          </ProtectedRoute>
+        ),
+      },
+      { path: '*', element: withSuspense(NotFound) },
     ],
   },
 ]);
